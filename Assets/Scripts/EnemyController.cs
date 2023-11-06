@@ -10,6 +10,12 @@ public class EnemyController : MonoBehaviour
     public float speed = 3f;
     private Rigidbody2D rb;
 
+    public bool isShootAble = false;
+    public GameObject bulletEnemyPrefab;
+    public float bulletSpeed;
+    public float timeBtwFire;
+    private float fireCooldown;
+
     [SerializeField]
     Image heathBar;
 
@@ -40,6 +46,18 @@ public class EnemyController : MonoBehaviour
     }
 
     // Update is called once per frame
+
+    private bool isRendered;
+
+    void OnBecameVisible()
+    {
+        isRendered = true;
+    }
+
+    void OnBecameInvisible()
+    {
+        isRendered = false;
+    }
     void Update()
     {
         if (!target)
@@ -51,14 +69,54 @@ public class EnemyController : MonoBehaviour
             RotateTowardsTarget();
         }
 
+        if(isShootAble && isRendered)
+        {
+            //Enemy fire
+            fireCooldown -= Time.deltaTime;
+            if (fireCooldown < 0)
+            {
+                fireCooldown = timeBtwFire;
+                EnemyFireBullet();
+            }
+        }
+        
         Vector2 direction = (target.position - transform.position).normalized;
-        rb.velocity = direction * speed;
+        if(isShootAble)
+        {
+            float distance = 5f; // adjust the desired distance here
+
+            // Calculate the distance between the player and the enemy
+            float distanceToPlayer = Vector2.Distance(transform.position, target.position);
+
+            // Only move towards the target position if the distance is greater than the desired distance
+            if (distanceToPlayer > distance)
+            {
+                // Calculate the direction towards the player
+                Vector2 towardsPlayer = (target.position - transform.position).normalized;
+
+                // Calculate the position that is at the specified distance from the player
+                Vector2 targetPosition = (Vector2)target.position - (towardsPlayer * distance);
+
+                // Move towards the target position at a certain speed
+                transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+            }
+        }
+        else
+        {
+            rb.velocity = direction * speed;
+        }
 
         if(currentBlood <= 0) {
             gameObject.SetActive(false);
         }
+    }
 
-
+    private void EnemyFireBullet()
+    {
+        var bulletPre = Instantiate(bulletEnemyPrefab, transform.position, Quaternion.identity);
+        Rigidbody2D rbBullet = bulletPre.GetComponent<Rigidbody2D>();
+        Vector3 direction = target.position - transform.position;
+        rbBullet.AddForce(direction.normalized * bulletSpeed, ForceMode2D.Impulse);
     }
 
     private void RotateTowardsTarget()

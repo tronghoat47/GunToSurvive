@@ -185,7 +185,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 3
+  speed: 2
+  isShootAble: 1
+  bulletEnemyPrefab: {fileID: 9079769501555819750, guid: cc72176d342e54545820516dc662d35b, type: 3}
+  bulletSpeed: 7
+  timeBtwFire: 3
   heathBar: {fileID: 5525668445606849214}
 --- !u!1 &2300106701899307571
 GameObject:
