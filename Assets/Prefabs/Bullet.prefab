@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -8923150175530328762}
   - component: {fileID: 4836346456995155920}
   - component: {fileID: 2981341397167257042}
+  - component: {fileID: 5780241978213018625}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -163,8 +164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1308cd7fd75d48fb91715c0b63ebf73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minDamage: 6
-  maxDamage: 16
 --- !u!82 &4836346456995155920
 AudioSource:
   m_ObjectHideFlags: 0
@@ -273,3 +272,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adc936dd31b6b4fb8b866724085bb0bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5780241978213018625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8488780647853429835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65e319c5853d148ccb4123a2f3a0ea3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LifeTime: 3
