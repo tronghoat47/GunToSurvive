@@ -17,6 +17,13 @@ public class PlayerController : MonoBehaviour
     private float rollTime;
     bool rollOnce = false;
 
+    //DAY NE SON
+    public float maxHP = 100;
+    public float maxSheild = 100;
+
+    private float currentHP;
+    private float currentSheild;
+
 
     private Vector3 moveInput;
 
@@ -25,6 +32,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
+        currentHP = maxHP;
+        currentSheild = maxSheild;
     }
 
     // Update is called once per frame

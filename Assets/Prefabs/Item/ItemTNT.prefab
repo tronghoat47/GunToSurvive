@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5130775127211541377}
   - component: {fileID: 3060492886746963456}
+  - component: {fileID: -7545882979988460377}
   m_Layer: 0
   m_Name: ItemTNT
   m_TagString: Untagged
@@ -84,3 +85,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-7545882979988460377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8742474963522291608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7f22a5db6398a94fb9d2f27040815b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hp: 0
+  Sheild: 0
