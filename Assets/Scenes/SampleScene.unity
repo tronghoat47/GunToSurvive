@@ -6852,6 +6852,8 @@ MonoBehaviour:
   moveSpeed: 5
   rollBoost: 5
   RollTime: 0.2
+  maxHP: 100
+  maxSheild: 100
   characterSR: {fileID: 67886290}
 --- !u!58 &940879836
 CircleCollider2D:
