@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class SpawnerItem : MonoBehaviour
 {
-    public float spawnRate = 0.5f;
-    public GameObject[] enemyPrefab;
-    public bool canSpawn = true;
+    public float spawnItem = 5f;
+    public GameObject[] itemPrefab;
+    public bool canSpawnItem = true;
     private Camera mainCamera;
     public Transform player;
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -27,17 +25,17 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator Spawners()
     {
-        WaitForSeconds wait = new WaitForSeconds(spawnRate);
-        while (canSpawn)
+        WaitForSeconds wait = new WaitForSeconds(spawnItem);
+        while (canSpawnItem)
         {
             yield return wait;
 
-             int rand = Random.Range(0, enemyPrefab.Length);
-            GameObject enemySpawn = enemyPrefab[rand];
+            int randItem = Random.Range(0, itemPrefab.Length);
+            GameObject itemSpawn = itemPrefab[randItem];
 
             Vector3 randomPosition = GetRandomPositionOutsideCamera();
 
-            Instantiate(enemySpawn, randomPosition, Quaternion.identity);
+            Instantiate(itemSpawn, randomPosition, Quaternion.identity);
         }
     }
 
@@ -48,8 +46,8 @@ public class Spawner : MonoBehaviour
 
         // Calculate random position outside the camera view
         Vector3 playerPosition = player.position;
-        float x = Random.Range(playerPosition.x - cameraWidth, playerPosition.x + cameraWidth)*1.5f;
-        float y = Random.Range(playerPosition.y - cameraHeight, playerPosition.y + cameraHeight)*1.5f;
+        float x = Random.Range(playerPosition.x - cameraWidth, playerPosition.x + cameraWidth) * 1.5f;
+        float y = Random.Range(playerPosition.y - cameraHeight, playerPosition.y + cameraHeight) * 1.5f;
 
         Vector3 randomPosition = new Vector3(x, y, 0f);
         return randomPosition;
