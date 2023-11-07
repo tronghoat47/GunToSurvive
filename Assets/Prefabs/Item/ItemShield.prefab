@@ -10,12 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6977677378027574803}
   - component: {fileID: 6807636532987720943}
-  - component: {fileID: -8557540172713561726}
   - component: {fileID: 1963023217068770480}
   - component: {fileID: 5301601128860363587}
   m_Layer: 0
   m_Name: ItemShield
-  m_TagString: Untagged
+  m_TagString: moresheild
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,20 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-8557540172713561726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2858508428622832942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7f22a5db6398a94fb9d2f27040815b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Hp: 0
-  Sheild: 0
 --- !u!50 &1963023217068770480
 Rigidbody2D:
   serializedVersion: 4

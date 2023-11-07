@@ -10,12 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5951869247898346852}
   - component: {fileID: 6740824108613084231}
-  - component: {fileID: 5545667485666564562}
   - component: {fileID: 3251523481963594539}
   - component: {fileID: 1085061610229881449}
   m_Layer: 0
   m_Name: Hp2
-  m_TagString: Untagged
+  m_TagString: chickenful
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,20 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5545667485666564562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6996980871286356818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7f22a5db6398a94fb9d2f27040815b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Hp: 0
-  Sheild: 0
 --- !u!50 &3251523481963594539
 Rigidbody2D:
   serializedVersion: 4

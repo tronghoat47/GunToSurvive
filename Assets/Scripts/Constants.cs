@@ -9,4 +9,15 @@ public class Constants : MonoBehaviour
     public const float enemy2Blood = 15;
     public const float enemy3Blood = 20;
     public const float enemy4Blood = 15;
+    public const float maxBloodPlayer = 200;
+    public const float maxManaPlayer = 200;
+    public const float maxSheild = 100;
+    public const float bulletEnemyDame = 4;
+    public const float enemyDame = 10;
+
+    public const float moreSheild = 20;
+    public const float moreHealthChicken = 20;
+    public const float moreHealthChickenFul = 20;
+
+    public const float manaRollOver = 10;
 }
