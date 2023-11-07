@@ -5,22 +5,28 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
+    public static LevelManager manager;
     public float Score;
     public float Highscore;
 
     public Text ScoreText;
     public Text HighScoreText;
 
-    public void AddScore()
+
+    private void Awake()
     {
-        Score++;
+        manager = this;
+    }
+    public void AddScore(float plusCore)
+    {
+        Score += plusCore;
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Highscore = PlayerPrefs.GetFloat("HighScore");
     }
 
     // Update is called once per frame
@@ -28,6 +34,10 @@ public class LevelManager : MonoBehaviour
     {
         ScoreText.text = $"Score: {Score}";
         HighScoreText.text = $"High Score: {Highscore}";
-
+        if (Score > Highscore)
+        {
+            Highscore = Score;
+            PlayerPrefs.SetFloat("HighScore", Score);
+        }
     }
 }

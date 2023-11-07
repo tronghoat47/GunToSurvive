@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour
 
     public bool isShootAble = false;
     public GameObject bulletEnemyPrefab;
-    public float bulletSpeed;
+    public float bulletSpeed;   
     public float timeBtwFire;
     private float fireCooldown;
 
@@ -20,6 +20,8 @@ public class EnemyController : MonoBehaviour
     Image heathBar;
 
     private float maxBlood, currentBlood;
+    private float score = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +35,7 @@ public class EnemyController : MonoBehaviour
                 break;
             case "Enemy_03(Clone)":
                 maxBlood = Constants.enemy3Blood;
+                score = 3;
                 break;
             case "Enemy_04(Clone)":
                 maxBlood = Constants.enemy4Blood;
@@ -107,6 +110,7 @@ public class EnemyController : MonoBehaviour
         }
 
         if(currentBlood <= 0) {
+            LevelManager.manager.AddScore(score);
             gameObject.SetActive(false);
         }
     }
