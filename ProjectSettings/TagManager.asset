@@ -18,6 +18,7 @@ TagManager:
   - extrabullet
   - moresheild
   - mine
+  - Skill
   layers:
   - Default
   - TransparentFX
