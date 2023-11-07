@@ -19,6 +19,7 @@ TagManager:
   - moresheild
   - mine
   - Skill
+  - moremana
   layers:
   - Default
   - TransparentFX

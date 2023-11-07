@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     Text sheildText;
     [SerializeField]
     Text manaText;
+    [SerializeField]
+    Text skillDurationText;
 
     public float maxHP;
     public float maxSheild;
@@ -53,7 +55,7 @@ public class PlayerController : MonoBehaviour
     private bool isSkillVisible = false;
     private float currentRotation = 0f;
     private float rotationSpeed;
-
+    float durationSkill = 0;
 
 
     void Start()
@@ -81,6 +83,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        durationSkill += Time.deltaTime;
+        if (durationSkill > Constants.durationSkill) {
+            durationSkill = Constants.durationSkill;
+        }
+
         moveInput.x = Input.GetAxis("Horizontal");
         moveInput.y = Input.GetAxis("Vertical");
 
@@ -91,7 +98,7 @@ public class PlayerController : MonoBehaviour
 
 
         //Use roll
-        if (Input.GetKeyDown(KeyCode.C) && rollTime <= 0)
+        if (Input.GetKeyDown(KeyCode.C) && rollTime <= 0 && currentMana >= Constants.manaRollOver)
         {
             currentMana -= Constants.manaRollOver;
             manaText.text = currentMana.ToString();
@@ -102,10 +109,13 @@ public class PlayerController : MonoBehaviour
         }
 
         //Use skill
-        if (Input.GetKeyDown(KeyCode.Space) && !isRotating)
+        if (Input.GetKeyDown(KeyCode.Space) && !isRotating && currentMana >= Constants.manaSkill && durationSkill >= Constants.durationSkill)
         {
+            currentMana -= Constants.manaSkill;
+            manaText.text = currentMana.ToString();
             isRotating = true;
             ShowSkill();
+            durationSkill = 0;
         }
         if (isRotating)
         {
@@ -168,12 +178,17 @@ public class PlayerController : MonoBehaviour
         {
             currentSheild = 0;
         }
+        if (currentMana < 0) {
+            currentMana = 0;
+        }
 
         healthBar.fillAmount = currentHP / maxHP;
         healthText.text = "Health: " + currentHP.ToString();
-
+        manaBar.fillAmount = currentMana / maxMana;
+        manaText.text = "Mana: " + currentMana.ToString();
         sheildBar.fillAmount = currentSheild / maxSheild;
         sheildText.text = "Sheild: " + currentSheild.ToString();
+        skillDurationText.text = "Sweeping: " + Mathf.Floor(Constants.durationSkill - durationSkill).ToString();
     }
 
     private void ShowSkill()
@@ -188,6 +203,14 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "moresheild")
         {
             currentSheild += Constants.moreSheild;
+        }
+
+        if (collision.gameObject.tag == "moremana") {
+            currentMana += Constants.moreMana;
+        }
+
+        if (collision.gameObject.tag == "extrabullet") {
+            currentMana += Constants.moreMana;
         }
 
         if (currentSheild > 0)

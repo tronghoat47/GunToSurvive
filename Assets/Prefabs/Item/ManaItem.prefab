@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4462041593451191989}
   m_Layer: 0
   m_Name: ManaItem
-  m_TagString: Untagged
+  m_TagString: moremana
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
