@@ -271,6 +271,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 3
+  isShootAble: 0
+  bulletEnemyPrefab: {fileID: 0}
+  bulletSpeed: 0
+  timeBtwFire: 0
   heathBar: {fileID: 8933103019672505451}
 --- !u!1 &4799467430037833079
 GameObject:
