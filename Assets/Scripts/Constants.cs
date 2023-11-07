@@ -23,6 +23,8 @@ public class Constants : MonoBehaviour
 
     public const float spawnEnemyRateDefault = 0.5f;
     public const int countEnemyRateDefault = 10;
+    public const float spawnItemRateDefault = 3f;
+    public const int countItemRateDefault = 20;
 
     public const int scoreEnemy1 = 2;
     public const int scoreEnemy2 = 3;
