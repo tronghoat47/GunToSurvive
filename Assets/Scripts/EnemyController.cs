@@ -181,5 +181,9 @@ public class EnemyController : MonoBehaviour
             currentBlood -= Constants.bulletPlayerGun;
             heathBar.fillAmount = currentBlood / maxBlood;
         }
+        if (collision.gameObject.tag == "Skill") {
+            currentBlood = 0;
+            heathBar.fillAmount = currentBlood / maxBlood;
+        }
     }
 }
