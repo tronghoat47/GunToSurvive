@@ -13,6 +13,11 @@ TagManager:
   - Enemy_03
   - Enemy_04
   - bulletEnemy
+  - chicken
+  - chickenful
+  - extrabullet
+  - moresheild
+  - mine
   layers:
   - Default
   - TransparentFX

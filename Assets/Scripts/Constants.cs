@@ -14,4 +14,10 @@ public class Constants : MonoBehaviour
     public const float maxSheild = 100;
     public const float bulletEnemyDame = 4;
     public const float enemyDame = 10;
+
+    public const float moreSheild = 20;
+    public const float moreHealthChicken = 20;
+    public const float moreHealthChickenFul = 20;
+
+    public const float manaRollOver = 10;
 }
