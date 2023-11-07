@@ -134,8 +134,10 @@ public class PlayerController : MonoBehaviour
         }
 
         // pause screen
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            pauseMenu.ShowInforPlayer(currentHP, maxHP, currentMana, maxMana, currentSheild, maxSheild);
             pauseMenu.Pause();
         }
 
