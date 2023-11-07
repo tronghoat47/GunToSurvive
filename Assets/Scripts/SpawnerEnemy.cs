@@ -4,40 +4,64 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public float spawnRate = 0.5f;
+    public float spawnRate;
     public GameObject[] enemyPrefab;
     public bool canSpawn = true;
+    private int EnemyCount;
     private Camera mainCamera;
     public Transform player;
+    float duration = 0;
 
+    List<GameObject> Enemies;
 
     // Start is called before the first frame update
     void Start()
     {
+        spawnRate = Constants.spawnEnemyRateDefault;
+        EnemyCount = Constants.countEnemyRateDefault;
+
+        Enemies = new List<GameObject>();
+
+        for (int i = 0; i < EnemyCount; i++) {
+            int randEnemy = Random.Range(0, enemyPrefab.Length);
+            GameObject enemyObject = Instantiate(enemyPrefab[randEnemy]);
+
+            enemyObject.SetActive(false);
+
+            Enemies.Add(enemyObject);
+        }
+
         mainCamera = Camera.main;
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        StartCoroutine(Spawners());
+        //StartCoroutine(Spawners());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        duration += Time.deltaTime;
+
+        if (duration >= Constants.spawnEnemyRateDefault) {
+            GameObject enemy = getFreeEnemy();
+            if (enemy != null) {
+                Vector3 randomPosition = GetRandomPositionOutsideCamera();
+                enemy.transform.position = randomPosition;
+                enemy.SetActive(true);
+                duration = 0;
+            }
+        }
     }
 
     private IEnumerator Spawners()
     {
         WaitForSeconds wait = new WaitForSeconds(spawnRate);
-        while (canSpawn)
+        GameObject enemy = getFreeEnemy();
+        while (enemy != null)
         {
             yield return wait;
-
-            int randEnemy = Random.Range(0, enemyPrefab.Length);
-            GameObject enemySpawn = enemyPrefab[randEnemy];
-
+            enemy.SetActive(true);
             Vector3 randomPosition = GetRandomPositionOutsideCamera();
-
-            Instantiate(enemySpawn, randomPosition, Quaternion.identity);
+            gameObject.transform.position = randomPosition;
         }
     }
 
@@ -53,5 +77,14 @@ public class Spawner : MonoBehaviour
 
         Vector3 randomPosition = new Vector3(x, y, 0f);
         return randomPosition;
+    }
+
+    private GameObject getFreeEnemy() {
+        foreach (GameObject g in Enemies) {
+            if (!g.activeSelf) {
+                return g;
+            }
+        }
+        return null;
     }
 }

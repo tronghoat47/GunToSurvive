@@ -20,4 +20,12 @@ public class Constants : MonoBehaviour
     public const float moreHealthChickenFul = 20;
 
     public const float manaRollOver = 10;
+
+    public const float spawnEnemyRateDefault = 0.5f;
+    public const int countEnemyRateDefault = 10;
+
+    public const int scoreEnemy1 = 2;
+    public const int scoreEnemy2 = 3;
+    public const int scoreEnemy3 = 4;
+    public const int scoreEnemy4 = 3;
 }
