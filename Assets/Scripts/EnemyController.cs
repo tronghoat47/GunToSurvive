@@ -17,7 +17,11 @@ public class EnemyController : MonoBehaviour
     private float fireCooldown;
 
     [SerializeField]
+    Canvas canvas;
+    [SerializeField]
     Image heathBar;
+    [SerializeField]
+    Text txtScore;
 
     private float maxBlood, currentBlood;
     private float score = 1;
@@ -25,6 +29,8 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //txtScore = canvas.transform.Find("TextMyScore").GetComponent<Text>();
+
         rb = GetComponent<Rigidbody2D>();
         switch (gameObject.name) {
             case "Enemy_01(Clone)":
@@ -60,6 +66,11 @@ public class EnemyController : MonoBehaviour
     void OnBecameInvisible()
     {
         isRendered = false;
+    }
+
+    private void OnEnable() {
+        currentBlood = maxBlood;
+        heathBar.fillAmount = currentBlood / maxBlood;
     }
     void Update()
     {
@@ -112,6 +123,27 @@ public class EnemyController : MonoBehaviour
         if(currentBlood <= 0) {
             LevelManager.manager.AddScore(score);
             gameObject.SetActive(false);
+
+            //increase score
+            //switch (gameObject.name) {
+            //    case "Enemy_01(Clone)":
+            //        score += Constants.scoreEnemy1;
+            //        break;
+            //    case "Enemy_02(Clone)":
+            //        score += Constants.scoreEnemy2;
+            //        break;
+            //    case "Enemy_03(Clone)":
+            //        score += Constants.scoreEnemy3;
+            //        score = 3;
+            //        break;
+            //    case "Enemy_04(Clone)":
+            //        score += Constants.scoreEnemy4;
+            //        break;
+            //    default:
+            //        maxBlood = 10;
+            //        break;
+            //}
+            //txtScore.text = "Score: " + score;
         }
     }
 
