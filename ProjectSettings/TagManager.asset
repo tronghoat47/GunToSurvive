@@ -12,6 +12,7 @@ TagManager:
   - Enemy_02
   - Enemy_03
   - Enemy_04
+  - bulletEnemy
   layers:
   - Default
   - TransparentFX

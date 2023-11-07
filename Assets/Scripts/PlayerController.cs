@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,13 +18,20 @@ public class PlayerController : MonoBehaviour
     private float rollTime;
     bool rollOnce = false;
 
-    //DAY NE SON
-    public float maxHP = 100;
-    public float maxSheild = 100;
+    [SerializeField]
+    Image healthBar;
+    [SerializeField]
+    Image manaBar;
+    [SerializeField]
+    Text healthText;
+
+    public float maxHP;
+    public float maxSheild;
+    public float maxMana;
 
     private float currentHP;
     private float currentSheild;
-
+    private float currentMana;
 
     private Vector3 moveInput;
 
@@ -34,11 +42,10 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
-        currentHP = maxHP;
-        currentSheild = maxSheild;
+        currentHP = Constants.maxBloodPlayer;
+        currentSheild = Constants.maxSheild;
     }
 
-    // Update is called once per frame
     void Update()
     {
         moveInput.x = Input.GetAxis("Horizontal");
@@ -81,6 +88,30 @@ public class PlayerController : MonoBehaviour
             else
                 characterSR.transform.localScale = new Vector3(-1f, 1f, 0);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if(collision.gameObject.tag == "Enemy") {
+            if(currentSheild <=0) {
+                if(collision.gameObject.tag == "bulletEnemy") {
+                    currentHP -= Constants.bulletEnemyDame;
+                }
+                if(collision.gameObject.tag == "Enemy") {
+                    currentHP -= Constants.enemyDame;
+                }
+                healthBar.fillAmount = currentHP / maxHP;
+            } else {
+                if (collision.gameObject.tag == "bulletEnemy") {
+                    currentSheild -= Constants.bulletEnemyDame;
+                }
+                if (collision.gameObject.tag == "Enemy") {
+                    currentSheild -= Constants.enemyDame;
+                }
+                manaBar.fillAmount = currentSheild / maxSheild;
+            }
+        }
+
+        healthText.text = currentHP.ToString();
     }
 
 }
