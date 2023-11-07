@@ -9,18 +9,45 @@ public class SpawnerItem : MonoBehaviour
     public bool canSpawnItem = true;
     private Camera mainCamera;
     public Transform player;
+    float duration = 0;
+    private int ItemCount;
+
+    List<GameObject> Items;
+
     // Start is called before the first frame update
     void Start()
     {
+        ItemCount = Constants.countItemRateDefault;
         mainCamera = Camera.main;
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        StartCoroutine(Spawners());
+        Items = new List<GameObject>();
+
+        for (int i = 0; i < ItemCount; i++) {
+            int randEnemy = Random.Range(0, itemPrefab.Length);
+            GameObject itemObject = Instantiate(itemPrefab[randEnemy]);
+
+            itemObject.SetActive(false);
+
+            Items.Add(itemObject);
+        }
+
+        //StartCoroutine(Spawners());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        duration += Time.deltaTime;
+
+        if (duration >= Constants.spawnItemRateDefault) {
+            GameObject item = getFreeItem();
+            if (item != null) {
+                Vector3 randomPosition = GetRandomPositionOutsideCamera();
+                item.transform.position = randomPosition;
+                item.SetActive(true);
+                duration = 0;
+            }
+        }
     }
 
     private IEnumerator Spawners()
@@ -51,5 +78,14 @@ public class SpawnerItem : MonoBehaviour
 
         Vector3 randomPosition = new Vector3(x, y, 0f);
         return randomPosition;
+    }
+
+    private GameObject getFreeItem() {
+        foreach (GameObject g in Items) {
+            if (!g.activeSelf) {
+                return g;
+            }
+        }
+        return null;
     }
 }
