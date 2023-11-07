@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
 
     public SpriteRenderer characterSR;
 
+    public PauseMenu pauseMenu;
+
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
@@ -53,6 +55,12 @@ public class PlayerController : MonoBehaviour
             rollTime = RollTime;
             rollOnce = true;
             animator.SetBool("Roll", true);
+        }
+
+        // pause screen
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseMenu.Pause();
         }
 
         if(rollTime <= 0 && rollOnce == true)
