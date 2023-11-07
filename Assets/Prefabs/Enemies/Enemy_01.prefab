@@ -276,6 +276,7 @@ MonoBehaviour:
   bulletSpeed: 0
   timeBtwFire: 0
   heathBar: {fileID: 8933103019672505451}
+  txtScore: {fileID: 0}
 --- !u!1 &4799467430037833079
 GameObject:
   m_ObjectHideFlags: 0
