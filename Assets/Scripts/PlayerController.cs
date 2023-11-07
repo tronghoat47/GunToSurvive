@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
 
     public PauseMenu pauseMenu;
 
+    public DeathPopupController DeathPopupController;
+
 
     //Attribute Skill
     private GameObject skill;
@@ -135,7 +137,7 @@ public class PlayerController : MonoBehaviour
 
         // pause screen
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && currentHP > 0)
         {
             pauseMenu.ShowInforPlayer(currentHP, maxHP, currentMana, maxMana, currentSheild, maxSheild);
             pauseMenu.Pause();
@@ -174,6 +176,15 @@ public class PlayerController : MonoBehaviour
 
         sheildBar.fillAmount = currentSheild / maxSheild;
         sheildText.text = "Sheild: " + currentSheild.ToString();
+
+        if (currentHP <= 0)
+        {
+            DeathPopupController.ShowDeathScreen();
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                pauseMenu.Restart();
+            }
+        }
     }
 
     private void ShowSkill()
