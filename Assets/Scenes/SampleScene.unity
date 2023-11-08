@@ -3608,6 +3608,85 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &396137155
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 396137156}
+  - component: {fileID: 396137158}
+  - component: {fileID: 396137157}
+  m_Layer: 5
+  m_Name: notiUplevelEnemies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &396137156
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396137155}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1003051026}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 951, y: -418}
+  m_SizeDelta: {x: 1000, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &396137157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396137155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 40
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 4
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Level of enemies increase after 50s
+--- !u!222 &396137158
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396137155}
+  m_CullTransparentMesh: 1
 --- !u!1001 &412999558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8229,6 +8308,7 @@ MonoBehaviour:
   sheildText: {fileID: 230614361}
   manaText: {fileID: 1802147691}
   skillDurationText: {fileID: 1949832805}
+  notiUplevelEnemies: {fileID: 396137157}
   maxHP: 100
   maxSheild: 100
   maxMana: 0
@@ -17396,6 +17476,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7021444939641651513, guid: f881b3af1e12ed4489a1e41242c72ccc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1949832804}
+    - targetCorrespondingSourceObject: {fileID: 7021444939641651513, guid: f881b3af1e12ed4489a1e41242c72ccc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 396137156}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f881b3af1e12ed4489a1e41242c72ccc, type: 3}
 --- !u!4 &2046384856 stripped
@@ -18052,12 +18135,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8638507231116163943, guid: 3bbbe29a516ecd145a680aa6d02022a1, type: 3}
       propertyPath: itemPrefab.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8638507231116163943, guid: 3bbbe29a516ecd145a680aa6d02022a1, type: 3}
+      propertyPath: itemPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 471039394369326745, guid: cc57b8f38f075674fb3ef0fab2ea32ed, type: 3}
+    - target: {fileID: 8638507231116163943, guid: 3bbbe29a516ecd145a680aa6d02022a1, type: 3}
+      propertyPath: itemPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 6996980871286356818, guid: 812d1f9a412eed64dbb907172fe33854, type: 3}
+    - target: {fileID: 8638507231116163943, guid: 3bbbe29a516ecd145a680aa6d02022a1, type: 3}
+      propertyPath: itemPrefab.Array.data[2]
+      value: 
+      objectReference: {fileID: 2858508428622832942, guid: 44956709d85e1ef4fbfa06c47e7cd4a0, type: 3}
+    - target: {fileID: 8638507231116163943, guid: 3bbbe29a516ecd145a680aa6d02022a1, type: 3}
+      propertyPath: itemPrefab.Array.data[3]
+      value: 
+      objectReference: {fileID: 2238308234372317113, guid: 75823daa5f9adec4ba4d8c45bf5436a6, type: 3}
     - target: {fileID: 8638507231116163943, guid: 3bbbe29a516ecd145a680aa6d02022a1, type: 3}
       propertyPath: itemPrefab.Array.data[4]
       value: 
-      objectReference: {fileID: 2238308234372317113, guid: 75823daa5f9adec4ba4d8c45bf5436a6, type: 3}
+      objectReference: {fileID: 6243660549718540607, guid: 7912d8fbf587cd3499e4b009ca995720, type: 3}
     - target: {fileID: 8638507231116163943, guid: 3bbbe29a516ecd145a680aa6d02022a1, type: 3}
       propertyPath: itemPrefab.Array.data[5]
       value: 

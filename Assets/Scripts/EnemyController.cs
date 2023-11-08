@@ -25,10 +25,12 @@ public class EnemyController : MonoBehaviour
 
     private float maxBlood, currentBlood;
     private float score = 1;
+    float countTime = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+
         //txtScore = canvas.transform.Find("TextMyScore").GetComponent<Text>();
 
         rb = GetComponent<Rigidbody2D>();
@@ -74,6 +76,13 @@ public class EnemyController : MonoBehaviour
     }
     void Update()
     {
+        countTime += Time.deltaTime;
+
+        if(countTime > Constants.timeToIncreaseDame) {
+            maxBlood += Constants.increaseBlood;
+            countTime = 0;
+        }
+
         if (!target)
         {
             GetTarget();

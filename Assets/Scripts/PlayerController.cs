@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class PlayerController : MonoBehaviour
 {
@@ -33,6 +34,8 @@ public class PlayerController : MonoBehaviour
     Text manaText;
     [SerializeField]
     Text skillDurationText;
+    [SerializeField]
+    Text notiUplevelEnemies;
 
     public float maxHP;
     public float maxSheild;
@@ -59,6 +62,7 @@ public class PlayerController : MonoBehaviour
     private float rotationSpeed;
     float durationSkill = 0;
 
+    float countTime = 0;
 
     void Start()
     {
@@ -85,6 +89,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        countTime += Time.deltaTime;
+
+        if (countTime > Constants.timeToIncreaseDame) {
+            countTime = 0;
+        }
+        notiUplevelEnemies.text = "Level of enemies increase after " + Mathf.Floor(Constants.timeToIncreaseDame - countTime).ToString();
+
         durationSkill += Time.deltaTime;
         if (durationSkill > Constants.durationSkill) {
             durationSkill = Constants.durationSkill;
@@ -191,7 +202,8 @@ public class PlayerController : MonoBehaviour
         sheildBar.fillAmount = currentSheild / maxSheild;
         sheildText.text = currentSheild.ToString();
 
-        skillDurationText.text = "Sweeping: " + Mathf.Floor(Constants.durationSkill - durationSkill).ToString();
+
+        skillDurationText.text = "Sweeping: " + Mathf.Floor(Constants.durationSkill - durationSkill).ToString() + "s";
 
         if (currentHP <= 0)
         {
@@ -201,6 +213,7 @@ public class PlayerController : MonoBehaviour
                 pauseMenu.Restart();
             }
         }
+
     }
 
     private void ShowSkill()
