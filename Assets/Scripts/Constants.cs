@@ -35,4 +35,7 @@ public class Constants : MonoBehaviour
 
     public const float durationSkill = 6f;
 
+    public const float timeToIncreaseDame = 50f;
+    public const int increaseBlood = 10;
+
 }
