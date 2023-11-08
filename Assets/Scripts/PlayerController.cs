@@ -113,6 +113,7 @@ public class PlayerController : MonoBehaviour
         //Use roll
         if (Input.GetKeyDown(KeyCode.C) && rollTime <= 0 && currentMana >= Constants.manaRollOver)
         {
+            AudioManager.Instance.PlaySFX("skill");
             currentMana -= Constants.manaRollOver;
             manaText.text = currentMana.ToString();
             moveSpeed += rollBoost;
@@ -124,6 +125,7 @@ public class PlayerController : MonoBehaviour
         //Use skill
         if (Input.GetKeyDown(KeyCode.Space) && !isRotating && currentMana >= Constants.manaSkill && durationSkill >= Constants.durationSkill)
         {
+            AudioManager.Instance.PlaySFX("skill");
             currentMana -= Constants.manaSkill;
             manaText.text = currentMana.ToString();
             isRotating = true;
@@ -160,6 +162,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape) && currentHP > 0)
         {
+            
+
             pauseMenu.ShowInforPlayer(currentHP, maxHP, currentMana, maxMana, currentSheild, maxSheild);
             pauseMenu.Pause();
         }
@@ -227,14 +231,17 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "moresheild")
         {
+            AudioManager.Instance.PlaySFX("mana");
             currentSheild += Constants.moreSheild;
         }
 
         if (collision.gameObject.tag == "moremana") {
+            AudioManager.Instance.PlaySFX("mana");
             currentMana += Constants.moreMana;
         }
 
         if (collision.gameObject.tag == "extrabullet") {
+            AudioManager.Instance.PlaySFX("mana");
             currentMana += Constants.moreMana;
         }
 
@@ -243,9 +250,11 @@ public class PlayerController : MonoBehaviour
             switch (collision.tag)
             {
                 case "bulletEnemy":
+                    AudioManager.Instance.PlaySFX("hit");
                     currentSheild -= Constants.bulletEnemyDame;
                     break;
                 case "Enemy":
+                    AudioManager.Instance.PlaySFX("hit");
                     currentSheild -= Constants.enemyDame;
                     break;
                 default
@@ -259,15 +268,19 @@ public class PlayerController : MonoBehaviour
             switch (collision.tag)
             {
                 case "chicken":
+                    AudioManager.Instance.PlaySFX("mana");
                     currentHP += Constants.moreHealthChicken;
                     break;
                 case "chickenful":
+                    AudioManager.Instance.PlaySFX("mana");
                     currentHP += Constants.moreHealthChickenFul;
                     break;
                 case "bulletEnemy":
+                    AudioManager.Instance.PlaySFX("hit");
                     currentHP -= Constants.bulletEnemyDame;
                     break;
                 case "Enemy":
+                    AudioManager.Instance.PlaySFX("hit");
                     currentHP -= Constants.enemyDame;
                     break;
                 default:
