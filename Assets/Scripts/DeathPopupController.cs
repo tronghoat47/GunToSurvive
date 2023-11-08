@@ -7,6 +7,9 @@ public class DeathPopupController : MonoBehaviour
 {
     [SerializeField] public GameObject DeathManager;
 
+    [SerializeField] public Text hScore;
+
+    public string s;
     public Text ScoreText;
     public Text HighScoreText;
     float highScore;
@@ -15,7 +18,6 @@ public class DeathPopupController : MonoBehaviour
     {
         ScoreText.text = $"Your score: {LevelManager.manager.Score}";
         
-        HighScoreText.text = $"High score: {highScore}";
         DeathManager.SetActive(true);
         Time.timeScale = 0f;
     }
@@ -23,7 +25,7 @@ public class DeathPopupController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        highScore = PlayerPrefs.GetFloat("HighScore");
+        hScore.text = s;
     }
 
     // Update is called once per frame
